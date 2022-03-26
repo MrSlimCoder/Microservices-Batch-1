@@ -1,0 +1,8 @@
+PUSH TO REPO:
+
+git init
+git remote add origin <URL>
+git add .
+git commit -m "first commit"
+git push
+git push --set-upstream origin master
