@@ -1,17 +1,17 @@
 require("dotenv").config();
 
 const express = require('express');
+require("./config/mongodb");
 
 const middleware = require("./middleware");
-const details = require("./routes/details");
+const user = require("./routes/user");
 
 const app = express();
 
 app.use(middleware.bodyParser);
 app.use(middleware.morgan);
 
-app.use("/",details);
-// app.use("/user",users);
+app.use("/", user);
 
 app.listen(process.env.PORT, (err) => {
     if (err) console.log(err);
