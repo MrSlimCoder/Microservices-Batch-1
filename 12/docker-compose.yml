@@ -1,0 +1,22 @@
+version: '3'
+services:
+  detail:
+    build: ./Detail
+    ports:
+      - 4000:4000
+  gateway: 
+    build: ./Gateway
+    ports:
+      - 6000:6000
+  user: 
+    build: ./User
+    ports:
+      - 5000:5000
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+ mongodb:

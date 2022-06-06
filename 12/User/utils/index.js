@@ -1,0 +1,1 @@
+exports.compare = (a,b) => a > b; 
