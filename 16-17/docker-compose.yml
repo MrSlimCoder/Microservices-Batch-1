@@ -1,0 +1,46 @@
+version: '3'
+services:
+  detail:
+    build: ./Detail
+    ports:
+      - 4000:4000
+  gateway:
+    build: ./Gateway
+    ports:
+      - 6000:6000
+    networks:
+      - app-network
+    links:
+      - rabbitmq
+  user:
+    build: ./User
+    ports:
+      - 5000:5000
+  logs:
+    build: ./logs
+    ports:
+      - 7000:7000
+    networks:
+      - app-network
+    links:
+      - rabbitmq
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - app-network
+
+volumes:
+  mongodb:
+
+networks:
+  app-network:
+    driver: bridge
